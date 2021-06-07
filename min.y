@@ -1,5 +1,5 @@
 %{
-#include <stdio.h>     			/* C */
+#include <stdio.h>     			
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
@@ -77,6 +77,7 @@ void existe_simbolo(char *simbolo_nome ){
     printf("não declarado(a) a variavel "); 
      yyerror(simbolo_nome); 
   }
+  printf("\n VERIFICANDO DECLARAÇÃO '%s' OK\n", simbolo_nome);
 }
 
    //#### CODIGO PARA TRADUÇÃO DIRIGIDA PELA SINTAXE
@@ -141,16 +142,18 @@ programa : INT MAIN ABRE_PARENTESES FECHA_PARENTESES
             FECHA_CHAVES { montar_codigo_final(); }
             ;
 
-corpo:  	 INT ID PONTO_E_VIRGULA {verifica_simbolo($2);} corpo	
-          |ID '=' NUM PONTO_E_VIRGULA    {existe_simbolo($1);} corpo
-        	|RETURN expr PONTO_E_VIRGULA {montar_codigo_retorno();} corpo
-        	| 
-        	;
+corpo:       INT ID PONTO_E_VIRGULA         {verifica_simbolo($2);}   corpo
+            |ID '=' expr PONTO_E_VIRGULA    {existe_simbolo($1);}      corpo
+            |RETURN expr PONTO_E_VIRGULA    {montar_codigo_retorno();}corpo
+            | 
+            ;
 
-expr: 	expr '+' expr 	        {montar_codigo_operacao('+');    }
-	|	    expr '-' expr 	        {montar_codigo_operacao('-');    }
-	| 	  NUM 			        {montar_codigo_empilhamento($1); }
+expr: 	expr '+' expr 	        {montar_codigo_operacao('+');}
+	|	    expr '-' expr 	        {montar_codigo_operacao('-');}
+	| 	  NUM 			              {montar_codigo_empilhamento($1);}
+  |     ID                      {existe_simbolo($1);}
 	;
+
 
 
 %%           

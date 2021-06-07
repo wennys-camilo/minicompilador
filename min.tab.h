@@ -63,7 +63,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 121 "min.y" /* yacc.c:1909  */
+#line 122 "min.y" /* yacc.c:1909  */
 
 	int num; char *id;
 	
