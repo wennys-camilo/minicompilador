@@ -1,15 +1,34 @@
 # minicompilador
-mini compilador - Trabalho final de Compiladores
+Instituto Federal Goiano - Campus Rio Verde
 
-bison -d min.y 
+Bacharelado em Ciência da Computação - Rio Verde - Compiladores
+
+Mini compilador - Trabalho final de Compiladores
+
+
+bison -d min.y
+
 flex min.flex
+
 gcc min.tab.c lex.yy.c -lfl -o min
+
 ./min < entrada.c
 
-//gerar out.s
+## Gerar out
 
-cat out.s          //mostrar o que gerou 
+cat out.s
+
 as out.s -o out.o
-ld out.o -o out 
-./out 
+
+ld out.o -o out
+
+./out
+
 echo $?
+
+# (1) Cálculo de expressões com números constantes (adição e subtração); ex: return 10 + 20 – 4;
+# (2) Declaração de variáveis inteiras; ex: int x; int y;
+# (3) Uso de variáveis – atribuição e cálculo em expressões (declaração antes do uso); ex: x = 10; y = x; z = z + t -1;
+
+
+
