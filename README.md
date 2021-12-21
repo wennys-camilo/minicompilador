@@ -3,7 +3,10 @@ Instituto Federal Goiano - Campus Rio Verde
 
 Bacharelado em Ciência da Computação - Rio Verde - Compiladores
 
+Integrantes: Wennys Camilo da Silva Oliveira e Conrado Costa Nunes
+
 Mini compilador - Trabalho final de Compiladores
+
 
 
 bison -d min.y
